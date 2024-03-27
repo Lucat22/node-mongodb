@@ -1,4 +1,5 @@
 const express = require('express')
+const ProdutoController = require('../controllers/ProdutoController')
 const Produto = require('../models/Produto')
 const router = express.Router()
 
@@ -6,9 +7,7 @@ router.get('/', function(req, res){
     res.json({})
 })
 
-router.get('/produtos', async function(req, res){
-    res.json( await Produto.find() )
-})
+router.get('/produtos', (req, res) => ProdutoController.getAll(req, res))
 
 router.post('/produtos', async function(req, res){
     res.json( await Produto.create(req.body) )
