@@ -8,6 +8,10 @@ router.get('/', function(req, res){
 })
 
 router.get('/produtos', (req, res) => ProdutoController.getAll(req, res))
+router.post('/produtos', (req, res) => ProdutoController.create(req, res))
+router.get('/produtos/:id', (req, res) => ProdutoController.get(req, res))
+router.put('/produtos/:id', (req, res) => ProdutoController.update(req, res))
+router.delete('/produtos/:id', (req, res) => ProdutoController.delete(req, res))
 
 router.post('/produtos', async function(req, res){
     res.json( await Produto.create(req.body) )
